@@ -544,7 +544,7 @@ div.helpLinksLeft a { padding-top: 7px; display: block; float: left; }",
 												'method'					=> $method,
 												'hook'						=> $hook,
 												'settings'					=> addslashes(serialize($settings)),
-												'priority'					=> 10,
+												'priority'					=> 1,
 												'version'					=> $this->version,
 												'enabled'					=> "y"
 											)
@@ -630,7 +630,10 @@ div.helpLinksLeft a { padding-top: 7px; display: block; float: left; }",
 			foreach ($hooks as $hook => $method)
 			{
 				$sql[] = $DB->update_string( 'exp_extensions',
-											  array('settings' => addslashes(serialize($settings))),
+											  array(
+												'settings' => addslashes(serialize($settings)),
+												'priority' => 1
+											  ),
 											  "class = '".get_class($this)."'"
 											);
 			}
