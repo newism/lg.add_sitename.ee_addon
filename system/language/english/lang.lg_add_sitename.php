@@ -18,7 +18,8 @@ $L = array(
 
 	'access_rights' => 'Extension Access',
 	'enable_extension_for_this_site' => 'Enable LG Add Sitename extension for this site?',
-	'cp_header_title' => 'CP admin header options',
+	'cp_header_title' => 'CP Branding Options',
+	'super_replacements' => 'Super Replacements',
 	'enable_super_replacements' => 'Enable \'Super Replacements\'',
 	'enable_super_replacements_info' => '
 		<p>LG Add sitename will replace certain variables in your xhtml template. By default the extension will replace the following variables: <strong>{site_name}</strong>, <strong>{site_description}</strong> and <strong>{site_url}</strong>.</p>
@@ -35,6 +36,10 @@ $L = array(
 	'head_additions_title'		=> 'CP &lt;/head&gt; additions',
 	'head_additions_label'		=> 'Head additions',
 	'head_additions_info'		=> 'Head additions are added right before the closing &lt;/head&gt; tag. Add global css files, site wide meta, favicons or whatever takes your fancy to every page of the CP.',
+
+	'body_additions_title'		=> 'CP &lt;body&gt; additions',
+	'body_additions_label'		=> 'Body additions',
+	'body_additions_info'		=> 'Body additions are added right after the opening &lt;body&gt; tag. Add a global info to be display throughout the CP.',
 
 	'foot_additions_title'		=> 'CP &lt;/body&gt; additions',
 	'foot_additions_label'		=> 'Footer additions',
