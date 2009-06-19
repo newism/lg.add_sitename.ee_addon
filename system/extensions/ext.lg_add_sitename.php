@@ -128,10 +128,10 @@ class Lg_add_sitename {
 		$DSP->body = '';
 
 		if(isset($settings['show_promos']) === FALSE) {$settings['show_promos'] = 'y';}
-		if($settings['show_promos'] == 'y')
-		{
-			$DSP->body .= "<script src='http://leevigraham.com/promos/ee.php?id=" . rawurlencode(LG_ASN_addon_id) ."&v=".$this->version."' type='text/javascript' charset='utf-8'></script>";
-		}
+		// if($settings['show_promos'] == 'y')
+		// {
+		// 	$DSP->body .= "<script src='http://leevigraham.com/promos/ee.php?id=" . rawurlencode(LG_ASN_addon_id) ."&v=".$this->version."' type='text/javascript' charset='utf-8'></script>";
+		// }
 
 		if(isset($settings['show_donate']) === FALSE) {$settings['show_donate'] = 'y';}
 		if($settings['show_donate'] == 'y')
