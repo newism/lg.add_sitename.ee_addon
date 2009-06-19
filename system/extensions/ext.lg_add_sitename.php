@@ -689,13 +689,13 @@ div.helpLinksLeft a { padding-top: 7px; display: block; float: left; }",
 
 			if($this->settings['show_time'] == 'y')
 			{
-				$xhtml = "<div id='server-time'><pre>";
-				$xhtml .= "Server Time:		  " . date("D M j G:i:s T Y") . " <!-- " . time() ." --><br/>";
-				$xhtml .= "PHP UTC Time:		  " . gmdate("D M j G:i:s \U\T\C Y") . "<br />";
-				$xhtml .= "EE UTC Time:		  " . date("D M j G:i:s \U\T\C Y", $LOC->now) . " <!-- " . $LOC->now . " --><br/>";
-				$xhtml .= "EE Localised Time:	  " . date("D M j G:i:s Y", $LOC->set_localized_time()) . "<br />";
-				$xhtml .= "EE Localised Human Time:  " . $LOC->set_human_time();
-				$xhtml .= "</pre></div>";
+				$xhtml = "<div id='server-time'>";
+				$xhtml .= "Server Time: " . date("D M j G:i:s T Y") . " <!-- " . time() ." --><br/>";
+				$xhtml .= "EE UTC Time: " . date("D M j G:i:s \U\T\C Y", $LOC->now) . " <!-- " . $LOC->now . " --><br/>";
+				$xhtml .= "PHP UTC Time: " . gmdate("D M j G:i:s \U\T\C Y") . "<br />";
+				$xhtml .= "Localised Time: " . date("D M j G:i:s Y", $LOC->set_localized_time()) . "<br />";
+				$xhtml .= "Localised EE Human Time: " . $LOC->set_human_time();
+				$xhtml .= "</div>";
 			}
 
 			$xhtml .= $this->settings['xhtml'];

@@ -4,10 +4,6 @@
 
 dirname=`dirname "$0"`
 
-echo ""
-echo "Creating symlinks for LG Add Sitename"
-echo "------------------------------------"
-echo ""
 echo "Enter the path to your ExpressionEngine Install without a trailing slash [ENTER]:"
 read ee_path
 echo "Enter your system folder name [ENTER]:"
