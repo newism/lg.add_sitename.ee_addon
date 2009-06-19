@@ -183,6 +183,37 @@ class Lg_add_sitename {
 
 		$DSP->body .=   $DSP->table_c();
 
+    // SUPER REPLACEMENTS
+    $DSP->body .=   $DSP->table_open(array('class' => 'tableBorder', 'border' => '0', 'style' => 'margin-top:18px; width:100%'));
+    
+		$DSP->body .=   $DSP->tr();
+		$DSP->body .=   $DSP->td('tableHeading', '', '2');
+		$DSP->body .=   $LANG->line("super_replacements");
+		$DSP->body .=   $DSP->td_c();
+		$DSP->body .=   $DSP->tr_c();
+
+    $DSP->body .=   $DSP->tr();
+		$DSP->body .=   $DSP->td('', '', '2');
+		$DSP->body .=   "<div class='box' style='border-width:0 0 1px 0; margin:0; padding:10px 5px'><p>" . $LANG->line('enable_super_replacements_info'). "</p></div>";
+		$DSP->body .=   $DSP->td_c();
+		$DSP->body .=   $DSP->tr_c();
+
+
+		$DSP->body .=   $DSP->tr();
+		$DSP->body .=   $DSP->td('tableCellTwo', '30%');
+		$DSP->body .=   $DSP->qdiv('defaultBold', $LANG->line('enable_super_replacements'));
+		$DSP->body .=   $DSP->td_c();
+
+		$DSP->body .=   $DSP->td('tableCellTwo');
+		$DSP->body .=   "<select name='enable_super_replacements'>"
+						. $DSP->input_select_option('y', "Yes", (($settings['enable_super_replacements'] == 'y') ? 'y' : '' ))
+						. $DSP->input_select_option('n', "No", (($settings['enable_super_replacements'] == 'n') ? 'y' : '' ))
+						. $DSP->input_select_footer();
+		$DSP->body .=   $DSP->td_c();
+		$DSP->body .=   $DSP->tr_c();
+		
+		$DSP->body .=   $DSP->table_c();
+
 		// HEAD ADDITIONS
 		$DSP->body .=   $DSP->table_open(array('class' => 'tableBorder', 'border' => '0', 'style' => 'margin-top:18px; width:100%'));
 
@@ -205,6 +236,60 @@ class Lg_add_sitename {
 
 		$DSP->body .=   $DSP->td('tableCellOne');
 		$DSP->body .=   $DSP->input_textarea('head_additions', $settings['head_additions'], 10, 'textarea', '99%');
+		$DSP->body .=   $DSP->td_c();
+		$DSP->body .=   $DSP->tr_c();
+
+		$DSP->body .=   $DSP->table_c();
+		
+		// body
+		$DSP->body .=   $DSP->table_open(array('class' => 'tableBorder', 'border' => '0', 'style' => 'margin-top:18px; width:100%'));
+
+		$DSP->body .=   $DSP->tr();
+		$DSP->body .=   $DSP->td('tableHeading', '', '2');
+		$DSP->body .=   $LANG->line("body_additions_title");
+		$DSP->body .=   $DSP->td_c();
+		$DSP->body .=   $DSP->tr_c();
+
+		$DSP->body .=   $DSP->tr();
+		$DSP->body .=   $DSP->td('', '', '2');
+		$DSP->body .=   "<div class='box' style='border-width:0 0 1px 0; margin:0; padding:10px 5px'><p>" . $LANG->line('body_additions_info'). "</p></div>";
+		$DSP->body .=   $DSP->td_c();
+		$DSP->body .=   $DSP->tr_c();
+
+		$DSP->body .=   $DSP->tr();
+		$DSP->body .=   $DSP->td('tableCellOne', '30%');
+		$DSP->body .=   $DSP->qdiv('defaultBold', $LANG->line('body_additions_label'));
+		$DSP->body .=   $DSP->td_c();
+
+		$DSP->body .=   $DSP->td('tableCellOne');
+		$DSP->body .=   $DSP->input_textarea('body_additions', $settings['body_additions'], 10, 'textarea', '99%');
+		$DSP->body .=   $DSP->td_c();
+		$DSP->body .=   $DSP->tr_c();
+
+		$DSP->body .=   $DSP->table_c();
+
+		// FOOTER
+		$DSP->body .=   $DSP->table_open(array('class' => 'tableBorder', 'border' => '0', 'style' => 'margin-top:18px; width:100%'));
+
+		$DSP->body .=   $DSP->tr();
+		$DSP->body .=   $DSP->td('tableHeading', '', '2');
+		$DSP->body .=   $LANG->line("foot_additions_title");
+		$DSP->body .=   $DSP->td_c();
+		$DSP->body .=   $DSP->tr_c();
+
+		$DSP->body .=   $DSP->tr();
+		$DSP->body .=   $DSP->td('', '', '2');
+		$DSP->body .=   "<div class='box' style='border-width:0 0 1px 0; margin:0; padding:10px 5px'><p>" . $LANG->line('foot_additions_info'). "</p></div>";
+		$DSP->body .=   $DSP->td_c();
+		$DSP->body .=   $DSP->tr_c();
+
+		$DSP->body .=   $DSP->tr();
+		$DSP->body .=   $DSP->td('tableCellOne', '30%');
+		$DSP->body .=   $DSP->qdiv('defaultBold', $LANG->line('foot_additions_label'));
+		$DSP->body .=   $DSP->td_c();
+
+		$DSP->body .=   $DSP->td('tableCellOne');
+		$DSP->body .=   $DSP->input_textarea('foot_additions', $settings['foot_additions'], 10, 'textarea', '99%');
 		$DSP->body .=   $DSP->td_c();
 		$DSP->body .=   $DSP->tr_c();
 
@@ -240,25 +325,6 @@ class Lg_add_sitename {
 		$DSP->body .=   $DSP->tr_c();
 
 		$DSP->body .=   $DSP->tr();
-		$DSP->body .=   $DSP->td('', '', '2');
-		$DSP->body .=   "<div class='box' style='border-width:0 0 1px 0; margin:0; padding:10px 5px'><p>" . $LANG->line('enable_super_replacements_info'). "</p></div>";
-		$DSP->body .=   $DSP->td_c();
-		$DSP->body .=   $DSP->tr_c();
-
-		$DSP->body .=   $DSP->tr();
-		$DSP->body .=   $DSP->td('tableCellTwo', '30%');
-		$DSP->body .=   $DSP->qdiv('defaultBold', $LANG->line('enable_super_replacements'));
-		$DSP->body .=   $DSP->td_c();
-
-		$DSP->body .=   $DSP->td('tableCellTwo');
-		$DSP->body .=   "<select name='enable_super_replacements'>"
-						. $DSP->input_select_option('y', "Yes", (($settings['enable_super_replacements'] == 'y') ? 'y' : '' ))
-						. $DSP->input_select_option('n', "No", (($settings['enable_super_replacements'] == 'n') ? 'y' : '' ))
-						. $DSP->input_select_footer();
-		$DSP->body .=   $DSP->td_c();
-		$DSP->body .=   $DSP->tr_c();
-
-		$DSP->body .=   $DSP->tr();
 		$DSP->body .=   $DSP->td('tableCellOne', '30%');
 		$DSP->body .=   $DSP->qdiv('defaultBold', $LANG->line('show_time_label'));
 		$DSP->body .=   $DSP->td_c();
@@ -268,33 +334,6 @@ class Lg_add_sitename {
 						. $DSP->input_select_option('y', "Yes", (($settings['show_time'] == 'y') ? 'y' : '' ))
 						. $DSP->input_select_option('n', "No", (($settings['show_time'] == 'n') ? 'y' : '' ))
 						. $DSP->input_select_footer();
-		$DSP->body .=   $DSP->td_c();
-		$DSP->body .=   $DSP->tr_c();
-
-		$DSP->body .=   $DSP->table_c();
-
-		// FOOTER
-		$DSP->body .=   $DSP->table_open(array('class' => 'tableBorder', 'border' => '0', 'style' => 'margin-top:18px; width:100%'));
-
-		$DSP->body .=   $DSP->tr();
-		$DSP->body .=   $DSP->td('tableHeading', '', '2');
-		$DSP->body .=   $LANG->line("foot_additions_title");
-		$DSP->body .=   $DSP->td_c();
-		$DSP->body .=   $DSP->tr_c();
-
-		$DSP->body .=   $DSP->tr();
-		$DSP->body .=   $DSP->td('', '', '2');
-		$DSP->body .=   "<div class='box' style='border-width:0 0 1px 0; margin:0; padding:10px 5px'><p>" . $LANG->line('foot_additions_info'). "</p></div>";
-		$DSP->body .=   $DSP->td_c();
-		$DSP->body .=   $DSP->tr_c();
-
-		$DSP->body .=   $DSP->tr();
-		$DSP->body .=   $DSP->td('tableCellOne', '30%');
-		$DSP->body .=   $DSP->qdiv('defaultBold', $LANG->line('foot_additions_label'));
-		$DSP->body .=   $DSP->td_c();
-
-		$DSP->body .=   $DSP->td('tableCellOne');
-		$DSP->body .=   $DSP->input_textarea('foot_additions', $settings['foot_additions'], 10, 'textarea', '99%');
 		$DSP->body .=   $DSP->td_c();
 		$DSP->body .=   $DSP->tr_c();
 
@@ -514,6 +553,7 @@ div.helpLinksLeft a { padding-top: 7px; display: block; float: left; }",
 			'check_for_updates' 				=> 'y',
 			'add_site_name_to_admin_page_title' => 'y',
 			'head_additions'					=> '',
+			'body_additions'        => '',
 			'foot_additions'					=> ''
 );
 
@@ -624,6 +664,7 @@ div.helpLinksLeft a { padding-top: 7px; display: block; float: left; }",
 			foreach ($settings as $site_id => $site_settings)
 			{
 				$settings[$site_id]['head_additions'] = '';
+				$settings[$site_id]['body_additions'] = '';
 				$settings[$site_id]['foot_additions'] = '';
 			}
 
@@ -685,8 +726,8 @@ div.helpLinksLeft a { padding-top: 7px; display: block; float: left; }",
 			// replace {site_name} in the setting
 			$site_name = stripslashes($PREFS->ini('site_name'));
 
-			$xhtml = "";
 
+      $xhtml = '';
 			if($this->settings['show_time'] == 'y')
 			{
 				$xhtml = "<div id='server-time'><pre>";
@@ -698,39 +739,46 @@ div.helpLinksLeft a { padding-top: 7px; display: block; float: left; }",
 				$xhtml .= "</pre></div>";
 			}
 
-			$xhtml .= $this->settings['xhtml'];
+      $fields = array(
+        'xhtml' => $xhtml . $this->settings['xhtml'],
+        'head_additions' => $this->settings['head_additions'],
+        'foot_additions' => $this->settings['foot_additions'],
+        'body_additions' => $this->settings['body_additions'],
+      );
 
-			$xhtml = str_replace("{sitename}", $PREFS->core_ini['site_name'], $xhtml);
-			$xhtml = str_replace("{site_name}", $PREFS->core_ini['site_name'], $xhtml);
-			$xhtml = str_replace("{site_description}", $PREFS->core_ini['site_description'], $xhtml);
-			$xhtml = str_replace("{site_url}", $PREFS->core_ini['site_url'], $xhtml);
+			$fields['xhtml'] = str_replace("{sitename}", $PREFS->core_ini['site_name'], $fields['xhtml']);
+			$fields['xhtml'] = str_replace("{site_name}", $PREFS->core_ini['site_name'], $fields['xhtml']);
+			$fields['xhtml'] = str_replace("{site_description}", $PREFS->core_ini['site_description'], $fields['xhtml']);
+			$fields['xhtml'] = str_replace("{site_url}", $PREFS->core_ini['site_url'], $fields['xhtml']);
 
 			// we just check if this is set for updates
-			if(isset($this->settings['enable_super_replacements']) && $this->settings['enable_super_replacements'] == 'y')
-			{
-				foreach($PREFS->core_ini as $key => $value)
-				{
-					if(is_array($value) === FALSE && strpos($xhtml, LD.$key.RD) !== FALSE)
-					{
-						$xhtml = str_replace(LD.$key.RD, $value, $xhtml);
-					}
-				}
+			if(isset($this->settings['enable_super_replacements']) && $this->settings['enable_super_replacements'] == 'y') {
+			  foreach ($fields as $field => $field_contents) {
+  				foreach($PREFS->core_ini as $key => $value) {
+            if(is_array($value) === FALSE && strpos($field_contents, LD . $key . RD) !== FALSE) {
+             $fields[$field] = str_replace(LD.$key.RD, $value, $fields[$field]);
+            }
+  				}
+			  }
 			}
 
 			$patterns[0] = "#</head>#";
-			$replacements[0] = "\n" . $this->settings['head_additions'] . "\n" . '<style type="text/css" media="screen">'.$this->settings['css']."</style>\n</head>";
+			$replacements[0] = "\n" . $fields['head_additions'] . "\n" . '<style type="text/css" media="screen">'.$this->settings['css']."</style>\n</head>";
 
-			$patterns[1] = "#</body>#";
-			$replacements[1] = "\n" . $this->settings['foot_additions'] . "\n</body>";
+			$patterns[1] = "#<body>#";
+			$replacements[1] = "\n<body>" . $fields['body_additions'];
+
+			$patterns[2] = "#</body>#";
+			$replacements[2] = "\n" . $fields['foot_additions'] . "\n</body>";
 
 			// CP head html
-			$patterns[2] = "/(<div class='helpLinksLeft' >)/";
-			$replacements[2] = "<div class='helpLinksLeft' >" . $xhtml;
+			$patterns[3] = "/(<div class='helpLinksLeft' >)/";
+			$replacements[3] = "<div class='helpLinksLeft' >" . $fields['xhtml'];
 			
 			if(isset($this->settings['enable_page_title_replacement']) === TRUE && $this->settings['enable_page_title_replacement'] == 'y')
 			{
-				$patterns[3] = "/ExpressionEngine<\/title>/";
-				$replacements[3] = str_replace("{site_name}", $PREFS->core_ini['site_name'], $this->settings['page_title_replacement_value']) . "</title>";
+				$patterns[4] = "/ExpressionEngine<\/title>/";
+				$replacements[4] = str_replace("{site_name}", $PREFS->core_ini['site_name'], $this->settings['page_title_replacement_value']) . "</title>";
 			}
 
 			// the new output
