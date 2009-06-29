@@ -18,20 +18,23 @@ $L = array(
 
 	'access_rights' => 'Extension Access',
 	'enable_extension_for_this_site' => 'Enable LG Add Sitename extension for this site?',
-	'cp_header_title' => 'CP Branding Options',
 	'super_replacements' => 'Super Replacements',
 	'enable_super_replacements' => 'Enable \'Super Replacements\'',
 	'enable_super_replacements_info' => '
 		<p>LG Add sitename will replace certain variables in your xhtml template. By default the extension will replace the following variables: <strong>{site_name}</strong>, <strong>{site_description}</strong> and <strong>{site_url}</strong>.</p>
 		<p>Enabling \'Super Replacements\' extends the variables replaced. See the <a href=\'http://leevigraham.com/cms-customisation/expressionengine/lg-add-sitename/\'>extension documentation</a> for a full list of variables replaced.</p>',
-	'css' => 'The CSS',
-	'xhtml' => 'The XHTML',
+
+	'cp_branding_title'			=> 'CP branding',
+	'cp_branding_info'			=> 'CP branding can be added to the CP header. The following XHTML will be added to the top left of the header and the CSS is added before the closing &lt;/head&gt; tag.',
+	'cp_branding_css_title' 	=> 'CP branding CSS',
+	'cp_branding_xhtml_title' 	=> 'CP branding XHTML',
 
 	'donation'					=> 'This extension was developed by <a href="http://leevigraham.com">Leevi Graham</a>. <br />Support its development by donating.',
 	'lg_admin_title'			=> 'LG Admin Options',
 	'show_donate_label'			=> 'Show the donation link at the top of the settings page?',
 	'show_promos_label'			=> 'Show promos at the top of the settings page?',
 	'show_time_label'			=> 'Show the server time and user time?',
+
 
 	'head_additions_title'		=> 'CP &lt;/head&gt; additions',
 	'head_additions_label'		=> 'Head additions',
@@ -59,4 +62,3 @@ $L = array(
 // END
 ''=>''
 );
-?>

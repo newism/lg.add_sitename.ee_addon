@@ -192,19 +192,19 @@ class Lg_add_sitename {
 		$DSP->body .=   $DSP->td_c();
 		$DSP->body .=   $DSP->tr_c();
 
-    $DSP->body .=   $DSP->tr();
+		$DSP->body .=   $DSP->tr();
 		$DSP->body .=   $DSP->td('', '', '2');
-		$DSP->body .=   "<div class='box' style='border-width:0 0 1px 0; margin:0; padding:10px 5px'><p>" . $LANG->line('enable_super_replacements_info'). "</p></div>";
+		$DSP->body .=   "<div class='box' style='border-width:0 0 1px 0; margin:0; padding:10px 5px'>" . $LANG->line('enable_super_replacements_info'). "</div>";
 		$DSP->body .=   $DSP->td_c();
 		$DSP->body .=   $DSP->tr_c();
 
 
 		$DSP->body .=   $DSP->tr();
-		$DSP->body .=   $DSP->td('tableCellTwo', '30%');
+		$DSP->body .=   $DSP->td('tableCellOne', '30%');
 		$DSP->body .=   $DSP->qdiv('defaultBold', $LANG->line('enable_super_replacements'));
 		$DSP->body .=   $DSP->td_c();
 
-		$DSP->body .=   $DSP->td('tableCellTwo');
+		$DSP->body .=   $DSP->td('tableCellOne');
 		$DSP->body .=   "<select name='enable_super_replacements'>"
 						. $DSP->input_select_option('y', "Yes", (($settings['enable_super_replacements'] == 'y') ? 'y' : '' ))
 						. $DSP->input_select_option('n', "No", (($settings['enable_super_replacements'] == 'n') ? 'y' : '' ))
@@ -212,6 +212,56 @@ class Lg_add_sitename {
 		$DSP->body .=   $DSP->td_c();
 		$DSP->body .=   $DSP->tr_c();
 		
+		$DSP->body .=   $DSP->table_c();
+
+		// CP Branding
+		$DSP->body .=   $DSP->table_open(array('class' => 'tableBorder', 'border' => '0', 'style' => 'margin-top:18px; width:100%'));
+
+		$DSP->body .=   $DSP->tr();
+		$DSP->body .=   $DSP->td('tableHeading', '', '2');
+		$DSP->body .=   $LANG->line("cp_branding_title");
+		$DSP->body .=   $DSP->td_c();
+		$DSP->body .=   $DSP->tr_c();
+
+		$DSP->body .=   $DSP->tr();
+		$DSP->body .=   $DSP->td('', '', '2');
+		$DSP->body .=   "<div class='box' style='border-width:0 0 1px 0; margin:0; padding:10px 5px'><p>" . $LANG->line('cp_branding_info'). "</p></div>";
+		$DSP->body .=   $DSP->td_c();
+		$DSP->body .=   $DSP->tr_c();
+
+		$DSP->body .=   $DSP->tr();
+		$DSP->body .=   $DSP->td('tableCellOne', '30%');
+		$DSP->body .=   $DSP->qdiv('defaultBold', $LANG->line('cp_branding_xhtml_title'));
+		$DSP->body .=   $DSP->td_c();
+
+		$DSP->body .=   $DSP->td('tableCellOne');
+		$DSP->body .=   $DSP->input_textarea('xhtml', $settings['xhtml'], 5, 'textarea', '99%');
+		$DSP->body .=   $DSP->td_c();
+		$DSP->body .=   $DSP->tr_c();
+		
+		$DSP->body .=   $DSP->tr();
+		$DSP->body .=   $DSP->td('tableCellTwo', '30%');
+		$DSP->body .=   $DSP->qdiv('defaultBold', $LANG->line('cp_branding_css_title'));
+		$DSP->body .=   $DSP->td_c();
+
+		$DSP->body .=   $DSP->td('tableCellTwo');
+		$DSP->body .=   $DSP->input_textarea('css', $settings['css'], 13, 'textarea', '99%');
+		$DSP->body .=   $DSP->td_c();
+		$DSP->body .=   $DSP->tr_c();
+
+		$DSP->body .=   $DSP->tr();
+		$DSP->body .=   $DSP->td('tableCellOne', '30%');
+		$DSP->body .=   $DSP->qdiv('defaultBold', $LANG->line('show_time_label'));
+		$DSP->body .=   $DSP->td_c();
+
+		$DSP->body .=   $DSP->td('tableCellOne');
+		$DSP->body .=   "<select name='show_time'>"
+						. $DSP->input_select_option('y', "Yes", (($settings['show_time'] == 'y') ? 'y' : '' ))
+						. $DSP->input_select_option('n', "No", (($settings['show_time'] == 'n') ? 'y' : '' ))
+						. $DSP->input_select_footer();
+		$DSP->body .=   $DSP->td_c();
+		$DSP->body .=   $DSP->tr_c();
+
 		$DSP->body .=   $DSP->table_c();
 
 		// HEAD ADDITIONS
@@ -295,49 +345,6 @@ class Lg_add_sitename {
 
 		$DSP->body .=   $DSP->table_c();
 
-		// CP HEADER
-		$DSP->body .=   $DSP->table_open(array('class' => 'tableBorder', 'border' => '0', 'style' => 'margin-top:18px; width:100%'));
-
-		$DSP->body .=   $DSP->tr();
-		$DSP->body .=   $DSP->td('tableHeading', '', '2');
-		$DSP->body .=   $LANG->line("cp_header_title");
-		$DSP->body .=   $DSP->td_c();
-		$DSP->body .=   $DSP->tr_c();
-
-		$DSP->body .=   $DSP->tr();
-		$DSP->body .=   $DSP->td('tableCellOne', '30%');
-		$DSP->body .=   $DSP->qdiv('defaultBold', $LANG->line('css'));
-		$DSP->body .=   $DSP->td_c();
-
-		$DSP->body .=   $DSP->td('tableCellOne');
-		$DSP->body .=   $DSP->input_textarea('css', $settings['css'], 13, 'textarea', '99%');
-		$DSP->body .=   $DSP->td_c();
-		$DSP->body .=   $DSP->tr_c();
-
-		$DSP->body .=   $DSP->tr();
-		$DSP->body .=   $DSP->td('tableCellTwo', '30%');
-		$DSP->body .=   $DSP->qdiv('defaultBold', $LANG->line('xhtml'));
-		$DSP->body .=   $DSP->td_c();
-
-		$DSP->body .=   $DSP->td('tableCellTwo');
-		$DSP->body .=   $DSP->input_textarea('xhtml', $settings['xhtml'], 5, 'textarea', '99%');
-		$DSP->body .=   $DSP->td_c();
-		$DSP->body .=   $DSP->tr_c();
-
-		$DSP->body .=   $DSP->tr();
-		$DSP->body .=   $DSP->td('tableCellOne', '30%');
-		$DSP->body .=   $DSP->qdiv('defaultBold', $LANG->line('show_time_label'));
-		$DSP->body .=   $DSP->td_c();
-
-		$DSP->body .=   $DSP->td('tableCellOne');
-		$DSP->body .=   "<select name='show_time'>"
-						. $DSP->input_select_option('y', "Yes", (($settings['show_time'] == 'y') ? 'y' : '' ))
-						. $DSP->input_select_option('n', "No", (($settings['show_time'] == 'n') ? 'y' : '' ))
-						. $DSP->input_select_footer();
-		$DSP->body .=   $DSP->td_c();
-		$DSP->body .=   $DSP->tr_c();
-
-		$DSP->body .=   $DSP->table_c();
 
 		// PAGE TITLES
 		$DSP->body .=   $DSP->table_open(array('class' => 'tableBorder', 'border' => '0', 'style' => 'margin-top:18px; width:100%'));
@@ -844,5 +851,3 @@ div.helpLinksLeft a { padding-top: 7px; display: block; float: left; }",
 	}
 
 }
-
-?>
