@@ -734,7 +734,8 @@ div.helpLinksLeft a { padding-top: 7px; display: block; float: left; }",
 			$site_name = stripslashes($PREFS->ini('site_name'));
 
 
-      $xhtml = '';
+			$xhtml = '';
+
 			if($this->settings['show_time'] == 'y')
 			{
 				$xhtml = "<div id='server-time'>";
@@ -746,27 +747,34 @@ div.helpLinksLeft a { padding-top: 7px; display: block; float: left; }",
 				$xhtml .= "</div>";
 			}
 
-      $fields = array(
-        'xhtml' => $xhtml . $this->settings['xhtml'],
-        'head_additions' => $this->settings['head_additions'],
-        'foot_additions' => $this->settings['foot_additions'],
-        'body_additions' => $this->settings['body_additions'],
-      );
+			$fields = array(
+				'xhtml' => $xhtml . $this->settings['xhtml'],
+				'head_additions' => $this->settings['head_additions'],
+				'foot_additions' => $this->settings['foot_additions'],
+				'body_additions' => $this->settings['body_additions'],
+			);
 
 			$fields['xhtml'] = str_replace("{sitename}", $PREFS->core_ini['site_name'], $fields['xhtml']);
 			$fields['xhtml'] = str_replace("{site_name}", $PREFS->core_ini['site_name'], $fields['xhtml']);
 			$fields['xhtml'] = str_replace("{site_description}", $PREFS->core_ini['site_description'], $fields['xhtml']);
 			$fields['xhtml'] = str_replace("{site_url}", $PREFS->core_ini['site_url'], $fields['xhtml']);
+			$fields['xhtml'] = str_replace("{screen_name}", $SESS->userdata['screen_name'], $fields['xhtml']);
+			$fields['xhtml'] = str_replace("{username}", $SESS->userdata['username'], $fields['xhtml']);
 
 			// we just check if this is set for updates
-			if(isset($this->settings['enable_super_replacements']) && $this->settings['enable_super_replacements'] == 'y') {
-			  foreach ($fields as $field => $field_contents) {
-  				foreach($PREFS->core_ini as $key => $value) {
-            if(is_array($value) === FALSE && strpos($field_contents, LD . $key . RD) !== FALSE) {
-             $fields[$field] = str_replace(LD.$key.RD, $value, $fields[$field]);
-            }
-  				}
-			  }
+			if(isset($this->settings['enable_super_replacements']) && $this->settings['enable_super_replacements'] == 'y')
+			{
+				foreach ($fields as $field => $field_contents)
+				{
+					$replacements = array_merge($PREFS->core_ini, $SESS->userdata);
+  					foreach($replacements as $key => $value)
+					{
+						if(is_array($value) === FALSE && strpos($field_contents, LD . $key . RD) !== FALSE)
+						{
+							$fields[$field] = str_replace(LD.$key.RD, $value, $fields[$field]);
+						}
+					}
+				}
 			}
 
 			$patterns[0] = "#</head>#";

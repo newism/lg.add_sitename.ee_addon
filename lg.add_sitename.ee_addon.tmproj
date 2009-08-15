@@ -2,8 +2,6 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>currentDocument</key>
-	<string>system/extensions/ext.lg_add_sitename.php</string>
 	<key>documents</key>
 	<array>
 		<dict>
@@ -11,8 +9,10 @@
 			<true/>
 			<key>name</key>
 			<string>lg.add_sitename.ee_addon</string>
+			<key>regexFileFilter</key>
+			<string>!</string>
 			<key>regexFolderFilter</key>
-			<string>!.*/(\.[^/]*|CVS|_darcs|_MTN|\{arch\}|blib|.*~\.nib|.*\.(framework|app|pbproj|pbxproj|xcode(proj)?|bundle))$</string>
+			<string>!\.(svn)</string>
 			<key>sourceDirectory</key>
 			<string></string>
 		</dict>
@@ -20,41 +20,7 @@
 	<key>fileHierarchyDrawerWidth</key>
 	<integer>359</integer>
 	<key>metaData</key>
-	<dict>
-		<key>lg.add_sitename.create-sym-links.command</key>
-		<dict>
-			<key>caret</key>
-			<dict>
-				<key>column</key>
-				<integer>138</integer>
-				<key>line</key>
-				<integer>12</integer>
-			</dict>
-			<key>firstVisibleColumn</key>
-			<integer>0</integer>
-			<key>firstVisibleLine</key>
-			<integer>0</integer>
-		</dict>
-		<key>system/extensions/ext.lg_add_sitename.php</key>
-		<dict>
-			<key>caret</key>
-			<dict>
-				<key>column</key>
-				<integer>40</integer>
-				<key>line</key>
-				<integer>206</integer>
-			</dict>
-			<key>firstVisibleColumn</key>
-			<integer>0</integer>
-			<key>firstVisibleLine</key>
-			<integer>255</integer>
-		</dict>
-	</dict>
-	<key>openDocuments</key>
-	<array>
-		<string>lg.add_sitename.create-sym-links.command</string>
-		<string>system/extensions/ext.lg_add_sitename.php</string>
-	</array>
+	<dict/>
 	<key>showFileHierarchyDrawer</key>
 	<false/>
 	<key>showFileHierarchyPanel</key>
@@ -67,18 +33,33 @@
 			<true/>
 			<key>subItems</key>
 			<dict>
+				<key>.git</key>
+				<dict>
+					<key>isExpanded</key>
+					<true/>
+					<key>subItems</key>
+					<dict/>
+				</dict>
 				<key>system</key>
 				<dict>
 					<key>isExpanded</key>
 					<true/>
 					<key>subItems</key>
 					<dict>
-						<key>extensions</key>
+						<key>language</key>
 						<dict>
 							<key>isExpanded</key>
 							<true/>
 							<key>subItems</key>
-							<dict/>
+							<dict>
+								<key>english</key>
+								<dict>
+									<key>isExpanded</key>
+									<true/>
+									<key>subItems</key>
+									<dict/>
+								</dict>
+							</dict>
 						</dict>
 					</dict>
 				</dict>
@@ -86,6 +67,6 @@
 		</dict>
 	</dict>
 	<key>windowFrame</key>
-	<string>{{116, 265}, {1360, 838}}</string>
+	<string>{{63, 0}, {1413, 878}}</string>
 </dict>
 </plist>
