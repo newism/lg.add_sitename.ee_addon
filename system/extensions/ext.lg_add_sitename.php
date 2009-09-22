@@ -116,36 +116,26 @@ class Lg_add_sitename {
 		$settings = $this->_get_settings();
 
 		$DSP->crumbline = TRUE;
-
-		$DSP->title  = $LANG->line('extension_settings');
-		$DSP->crumb  = $DSP->anchor(BASE.AMP.'C=admin'.AMP.'area=utilities', $LANG->line('utilities')).
 		$DSP->crumb_item($DSP->anchor(BASE.AMP.'C=admin'.AMP.'M=utilities'.AMP.'P=extensions_manager', $LANG->line('extensions_manager')));
-
+		$DSP->crumb  = $DSP->anchor(BASE.AMP.'C=admin'.AMP.'area=utilities', $LANG->line('utilities')).
 		$DSP->crumb .= $DSP->crumb_item($LANG->line('lg_add_sitename_title') . " {$this->version}");
 
 		$DSP->right_crumb($LANG->line('disable_extension'), BASE.AMP.'C=admin'.AMP.'M=utilities'.AMP.'P=toggle_extension_confirm'.AMP.'which=disable'.AMP.'name='.$IN->GBL('name'));
 
+		$DSP->title  = $LANG->line('extension_settings');
+
 		$DSP->body = '';
+		$DSP->body .= "<div class='mor settings-form'>";
 
-		if(isset($settings['show_promos']) === FALSE) {$settings['show_promos'] = 'y';}
-		// if($settings['show_promos'] == 'y')
-		// {
-		// 	$DSP->body .= "<script src='http://leevigraham.com/promos/ee.php?id=" . rawurlencode(LG_ASN_addon_id) ."&v=".$this->version."' type='text/javascript' charset='utf-8'></script>";
-		// }
-
-		if(isset($settings['show_donate']) === FALSE) {$settings['show_donate'] = 'y';}
-		if($settings['show_donate'] == 'y')
-		{
-			$DSP->body .= "<style type='text/css' media='screen'>
-				#donate{float:right; margin-top:0; padding-left:190px; position:relative; top:-2px}
-				#donate .button{background:transparent url(http://leevigraham.com/themes/site_themes/default/img/btn_paypal-donation.png) no-repeat scroll left bottom; display:block; height:0; overflow:hidden; position:absolute; top:0; left:0; padding-top:27px; text-decoration:none; width:175px}
-				#donate .button:hover{background-position:top right;}
-			</style>";
-			$DSP->body .= "<p id='donate'>
-							" . $LANG->line('donation') ."
-							<a rel='external' href='https://www.paypal.com/cgi-bin/webscr?cmd=_donations&amp;business=sales%40leevigraham%2ecom&amp;item_name=LG%20Expression%20Engine%20Development&amp;amount=%2e00&amp;no_shipping=1&amp;return=http%3a%2f%2fleevigraham%2ecom%2fdonate%2fthanks&amp;cancel_return=http%3a%2f%2fleevigraham%2ecom%2fdonate%2fno%2dthanks&amp;no_note=1&amp;tax=0&amp;currency_code=USD&amp;lc=US&amp;bn=PP%2dDonationsBF&amp;charset=UTF%2d8' class='button' target='_blank'>Donate</a>
-						</p>";
-		}
+		$DSP->body .= "<style type='text/css' media='screen'>
+			#donate{float:right; margin-top:0; padding-left:190px; position:relative; top:-2px}
+			#donate .button{background:transparent url(http://leevigraham.com/themes/site_themes/default/img/btn_paypal-donation.png) no-repeat scroll left bottom; display:block; height:0; overflow:hidden; position:absolute; top:0; left:0; padding-top:27px; text-decoration:none; width:175px}
+			#donate .button:hover{background-position:top right;}
+		</style>";
+		$DSP->body .= "<p id='donate'>
+						" . $LANG->line('donation') ."
+						<a rel='external' href='https://www.paypal.com/cgi-bin/webscr?cmd=_donations&amp;business=sales%40leevigraham%2ecom&amp;item_name=LG%20Expression%20Engine%20Development&amp;amount=%2e00&amp;no_shipping=1&amp;return=http%3a%2f%2fleevigraham%2ecom%2fdonate%2fthanks&amp;cancel_return=http%3a%2f%2fleevigraham%2ecom%2fdonate%2fno%2dthanks&amp;no_note=1&amp;tax=0&amp;currency_code=USD&amp;lc=US&amp;bn=PP%2dDonationsBF&amp;charset=UTF%2d8' class='button' target='_blank'>Donate</a>
+					</p>";
 
 		$DSP->body .= $DSP->heading($LANG->line('lg_add_sitename_title') . " <small>{$this->version}</small>");
 		
@@ -159,310 +149,12 @@ class Lg_add_sitename {
 								array('name' => strtolower(get_class($this)))
 		);
 
-		// EXTENSION ACCESS
-		$DSP->body .=   $DSP->table_open(array('class' => 'tableBorder', 'border' => '0', 'style' => 'margin-top:18px; width:100%'));
-
-		$DSP->body .=   $DSP->tr();
-		$DSP->body .=   $DSP->td('tableHeading', '', '2');
-		$DSP->body .=   $LANG->line("access_rights");
-		$DSP->body .=   $DSP->td_c();
-		$DSP->body .=   $DSP->tr_c();
-
-		$DSP->body .=   $DSP->tr();
-		$DSP->body .=   $DSP->td('tableCellOne', '30%');
-		$DSP->body .=   $DSP->qdiv('defaultBold', $LANG->line('enable_extension_for_this_site'));
-		$DSP->body .=   $DSP->td_c();
-
-		$DSP->body .=   $DSP->td('tableCellOne');
-		$DSP->body .=   "<select name='enable'>"
-						. $DSP->input_select_option('y', "Yes", (($settings['enable'] == 'y') ? 'y' : '' ))
-						. $DSP->input_select_option('n', "No", (($settings['enable'] == 'n') ? 'y' : '' ))
-						. $DSP->input_select_footer();
-		$DSP->body .=   $DSP->td_c();
-		$DSP->body .=   $DSP->tr_c();
-
-		$DSP->body .=   $DSP->table_c();
-
-    // SUPER REPLACEMENTS
-    $DSP->body .=   $DSP->table_open(array('class' => 'tableBorder', 'border' => '0', 'style' => 'margin-top:18px; width:100%'));
-    
-		$DSP->body .=   $DSP->tr();
-		$DSP->body .=   $DSP->td('tableHeading', '', '2');
-		$DSP->body .=   $LANG->line("super_replacements");
-		$DSP->body .=   $DSP->td_c();
-		$DSP->body .=   $DSP->tr_c();
-
-		$DSP->body .=   $DSP->tr();
-		$DSP->body .=   $DSP->td('', '', '2');
-		$DSP->body .=   "<div class='box' style='border-width:0 0 1px 0; margin:0; padding:10px 5px'>" . $LANG->line('enable_super_replacements_info'). "</div>";
-		$DSP->body .=   $DSP->td_c();
-		$DSP->body .=   $DSP->tr_c();
-
-
-		$DSP->body .=   $DSP->tr();
-		$DSP->body .=   $DSP->td('tableCellOne', '30%');
-		$DSP->body .=   $DSP->qdiv('defaultBold', $LANG->line('enable_super_replacements'));
-		$DSP->body .=   $DSP->td_c();
-
-		$DSP->body .=   $DSP->td('tableCellOne');
-		$DSP->body .=   "<select name='enable_super_replacements'>"
-						. $DSP->input_select_option('y', "Yes", (($settings['enable_super_replacements'] == 'y') ? 'y' : '' ))
-						. $DSP->input_select_option('n', "No", (($settings['enable_super_replacements'] == 'n') ? 'y' : '' ))
-						. $DSP->input_select_footer();
-		$DSP->body .=   $DSP->td_c();
-		$DSP->body .=   $DSP->tr_c();
-		
-		$DSP->body .=   $DSP->table_c();
-
-		// CP Branding
-		$DSP->body .=   $DSP->table_open(array('class' => 'tableBorder', 'border' => '0', 'style' => 'margin-top:18px; width:100%'));
-
-		$DSP->body .=   $DSP->tr();
-		$DSP->body .=   $DSP->td('tableHeading', '', '2');
-		$DSP->body .=   $LANG->line("cp_branding_title");
-		$DSP->body .=   $DSP->td_c();
-		$DSP->body .=   $DSP->tr_c();
-
-		$DSP->body .=   $DSP->tr();
-		$DSP->body .=   $DSP->td('', '', '2');
-		$DSP->body .=   "<div class='box' style='border-width:0 0 1px 0; margin:0; padding:10px 5px'><p>" . $LANG->line('cp_branding_info'). "</p></div>";
-		$DSP->body .=   $DSP->td_c();
-		$DSP->body .=   $DSP->tr_c();
-
-		$DSP->body .=   $DSP->tr();
-		$DSP->body .=   $DSP->td('tableCellOne', '30%');
-		$DSP->body .=   $DSP->qdiv('defaultBold', $LANG->line('cp_branding_xhtml_title'));
-		$DSP->body .=   $DSP->td_c();
-
-		$DSP->body .=   $DSP->td('tableCellOne');
-		$DSP->body .=   $DSP->input_textarea('xhtml', $settings['xhtml'], 5, 'textarea', '99%');
-		$DSP->body .=   $DSP->td_c();
-		$DSP->body .=   $DSP->tr_c();
-		
-		$DSP->body .=   $DSP->tr();
-		$DSP->body .=   $DSP->td('tableCellTwo', '30%');
-		$DSP->body .=   $DSP->qdiv('defaultBold', $LANG->line('cp_branding_css_title'));
-		$DSP->body .=   $DSP->td_c();
-
-		$DSP->body .=   $DSP->td('tableCellTwo');
-		$DSP->body .=   $DSP->input_textarea('css', $settings['css'], 13, 'textarea', '99%');
-		$DSP->body .=   $DSP->td_c();
-		$DSP->body .=   $DSP->tr_c();
-
-		$DSP->body .=   $DSP->tr();
-		$DSP->body .=   $DSP->td('tableCellOne', '30%');
-		$DSP->body .=   $DSP->qdiv('defaultBold', $LANG->line('show_time_label'));
-		$DSP->body .=   $DSP->td_c();
-
-		$DSP->body .=   $DSP->td('tableCellOne');
-		$DSP->body .=   "<select name='show_time'>"
-						. $DSP->input_select_option('y', "Yes", (($settings['show_time'] == 'y') ? 'y' : '' ))
-						. $DSP->input_select_option('n', "No", (($settings['show_time'] == 'n') ? 'y' : '' ))
-						. $DSP->input_select_footer();
-		$DSP->body .=   $DSP->td_c();
-		$DSP->body .=   $DSP->tr_c();
-
-		$DSP->body .=   $DSP->table_c();
-
-		// HEAD ADDITIONS
-		$DSP->body .=   $DSP->table_open(array('class' => 'tableBorder', 'border' => '0', 'style' => 'margin-top:18px; width:100%'));
-
-		$DSP->body .=   $DSP->tr();
-		$DSP->body .=   $DSP->td('tableHeading', '', '2');
-		$DSP->body .=   $LANG->line("head_additions_title");
-		$DSP->body .=   $DSP->td_c();
-		$DSP->body .=   $DSP->tr_c();
-
-		$DSP->body .=   $DSP->tr();
-		$DSP->body .=   $DSP->td('', '', '2');
-		$DSP->body .=   "<div class='box' style='border-width:0 0 1px 0; margin:0; padding:10px 5px'><p>" . $LANG->line('head_additions_info'). "</p></div>";
-		$DSP->body .=   $DSP->td_c();
-		$DSP->body .=   $DSP->tr_c();
-
-		$DSP->body .=   $DSP->tr();
-		$DSP->body .=   $DSP->td('tableCellOne', '30%');
-		$DSP->body .=   $DSP->qdiv('defaultBold', $LANG->line('head_additions_label'));
-		$DSP->body .=   $DSP->td_c();
-
-		$DSP->body .=   $DSP->td('tableCellOne');
-		$DSP->body .=   $DSP->input_textarea('head_additions', $settings['head_additions'], 10, 'textarea', '99%');
-		$DSP->body .=   $DSP->td_c();
-		$DSP->body .=   $DSP->tr_c();
-
-		$DSP->body .=   $DSP->table_c();
-		
-		// body
-		$DSP->body .=   $DSP->table_open(array('class' => 'tableBorder', 'border' => '0', 'style' => 'margin-top:18px; width:100%'));
-
-		$DSP->body .=   $DSP->tr();
-		$DSP->body .=   $DSP->td('tableHeading', '', '2');
-		$DSP->body .=   $LANG->line("body_additions_title");
-		$DSP->body .=   $DSP->td_c();
-		$DSP->body .=   $DSP->tr_c();
-
-		$DSP->body .=   $DSP->tr();
-		$DSP->body .=   $DSP->td('', '', '2');
-		$DSP->body .=   "<div class='box' style='border-width:0 0 1px 0; margin:0; padding:10px 5px'><p>" . $LANG->line('body_additions_info'). "</p></div>";
-		$DSP->body .=   $DSP->td_c();
-		$DSP->body .=   $DSP->tr_c();
-
-		$DSP->body .=   $DSP->tr();
-		$DSP->body .=   $DSP->td('tableCellOne', '30%');
-		$DSP->body .=   $DSP->qdiv('defaultBold', $LANG->line('body_additions_label'));
-		$DSP->body .=   $DSP->td_c();
-
-		$DSP->body .=   $DSP->td('tableCellOne');
-		$DSP->body .=   $DSP->input_textarea('body_additions', $settings['body_additions'], 10, 'textarea', '99%');
-		$DSP->body .=   $DSP->td_c();
-		$DSP->body .=   $DSP->tr_c();
-
-		$DSP->body .=   $DSP->table_c();
-
-		// FOOTER
-		$DSP->body .=   $DSP->table_open(array('class' => 'tableBorder', 'border' => '0', 'style' => 'margin-top:18px; width:100%'));
-
-		$DSP->body .=   $DSP->tr();
-		$DSP->body .=   $DSP->td('tableHeading', '', '2');
-		$DSP->body .=   $LANG->line("foot_additions_title");
-		$DSP->body .=   $DSP->td_c();
-		$DSP->body .=   $DSP->tr_c();
-
-		$DSP->body .=   $DSP->tr();
-		$DSP->body .=   $DSP->td('', '', '2');
-		$DSP->body .=   "<div class='box' style='border-width:0 0 1px 0; margin:0; padding:10px 5px'><p>" . $LANG->line('foot_additions_info'). "</p></div>";
-		$DSP->body .=   $DSP->td_c();
-		$DSP->body .=   $DSP->tr_c();
-
-		$DSP->body .=   $DSP->tr();
-		$DSP->body .=   $DSP->td('tableCellOne', '30%');
-		$DSP->body .=   $DSP->qdiv('defaultBold', $LANG->line('foot_additions_label'));
-		$DSP->body .=   $DSP->td_c();
-
-		$DSP->body .=   $DSP->td('tableCellOne');
-		$DSP->body .=   $DSP->input_textarea('foot_additions', $settings['foot_additions'], 10, 'textarea', '99%');
-		$DSP->body .=   $DSP->td_c();
-		$DSP->body .=   $DSP->tr_c();
-
-		$DSP->body .=   $DSP->table_c();
-
-
-		// PAGE TITLES
-		$DSP->body .=   $DSP->table_open(array('class' => 'tableBorder', 'border' => '0', 'style' => 'margin-top:18px; width:100%'));
-
-		$DSP->body .=   $DSP->tr();
-		$DSP->body .=   $DSP->td('tableHeading', '', '2');
-		$DSP->body .=   $LANG->line("page_title_title");
-		$DSP->body .=   $DSP->td_c();
-		$DSP->body .=   $DSP->tr_c();
-
-		$DSP->body .=   $DSP->tr();
-		$DSP->body .=   $DSP->td('', '', '2');
-		$DSP->body .=   "<div class='box' style='border-width:0 0 1px 0; margin:0; padding:10px 5px'><p>" . $LANG->line('page_title_title_info'). "</p></div>";
-		$DSP->body .=   $DSP->td_c();
-		$DSP->body .=   $DSP->tr_c();
-
-		$DSP->body .=   $DSP->tr();
-		$DSP->body .=   $DSP->td('tableCellOne', '30%');
-		$DSP->body .=   $DSP->qdiv('defaultBold', $LANG->line('page_title_enable_label'));
-		$DSP->body .=   $DSP->td_c();
-
-		$DSP->body .=   $DSP->td('tableCellOne');
-		$DSP->body .=   "<select name='enable_page_title_replacement'>"
-						. $DSP->input_select_option('y', "Yes", (($settings['enable_page_title_replacement'] == 'y') ? 'y' : '' ))
-						. $DSP->input_select_option('n', "No", (($settings['enable_page_title_replacement'] == 'n') ? 'y' : '' ))
-						. $DSP->input_select_footer();
-		$DSP->body .=   $DSP->td_c();
-		$DSP->body .=   $DSP->tr_c();
-
-		$DSP->body .=   $DSP->tr();
-		$DSP->body .=   $DSP->td('tableCellTwo', '30%');
-		$DSP->body .=   $DSP->qdiv('defaultBold', $LANG->line("page_title_value_label"));
-		$DSP->body .=   $DSP->td_c();
-
-		$DSP->body .=   $DSP->td('tableCellTwo');
-		$DSP->body .=   $DSP->input_text('page_title_replacement_value', $settings['page_title_replacement_value']);
-		$DSP->body .=   $DSP->td_c();
-		$DSP->body .=   $DSP->tr_c();
-
-		$DSP->body .=   $DSP->table_c();
-
-		// UPDATE SETTINGS
-		$DSP->body .=   $DSP->table_open(array('class' => 'tableBorder', 'border' => '0', 'style' => 'margin-top:18px; width:100%'));
-
-		$DSP->body .=   $DSP->tr();
-		$DSP->body .=   $DSP->td('tableHeading', '', '2');
-		$DSP->body .=   $LANG->line("check_for_updates_title");
-		$DSP->body .=   $DSP->td_c();
-		$DSP->body .=   $DSP->tr_c();
-
-		$DSP->body .=   $DSP->tr();
-		$DSP->body .=   $DSP->td('', '', '2');
-		$DSP->body .=   "<div class='box' style='border-width:0 0 1px 0; margin:0; padding:10px 5px'><p>" . $LANG->line('check_for_updates_info'). "</p></div>";
-		$DSP->body .=   $DSP->td_c();
-		$DSP->body .=   $DSP->tr_c();
-
-		$DSP->body .=   $DSP->tr();
-		$DSP->body .=   $DSP->td('tableCellOne', '30%');
-		$DSP->body .=   $DSP->qdiv('defaultBold', $LANG->line("check_for_updates_label"));
-		$DSP->body .=   $DSP->td_c();
-
-
-		$DSP->body .=   $DSP->td('tableCellOne');
-		$DSP->body .=   "<select name='check_for_updates'>"
-						. $DSP->input_select_option('y', "Yes", (($settings['check_for_updates'] == 'y') ? 'y' : '' ))
-						. $DSP->input_select_option('n', "No", (($settings['check_for_updates'] == 'n') ? 'y' : '' ))
-						. $DSP->input_select_footer();
-		$DSP->body .=   $DSP->td_c();
-		$DSP->body .=   $DSP->tr_c();
-
-		$DSP->body .=   $DSP->table_c();
-
-		if($IN->GBL('lg_admin') != 'y')
-		{
-			$DSP->body .= $DSP->table_c();
-			$DSP->body .= "<input type='hidden' value='".$settings['show_donate']."' name='show_donate' />";
-			$DSP->body .= "<input type='hidden' value='".$settings['show_promos']."' name='show_promos' />";
-		}
-		else
-		{
-			$DSP->body .= $DSP->table_open(array('class' => 'tableBorder', 'border' => '0', 'style' => 'margin-top:18px; width:100%'));
-			$DSP->body .= $DSP->tr()
-				. $DSP->td('tableHeading', '', '2')
-				. $LANG->line("lg_admin_title")
-				. $DSP->td_c()
-				. $DSP->tr_c();
-
-			$DSP->body .= $DSP->tr()
-				. $DSP->td('tableCellOne', '30%')
-				. $DSP->qdiv('defaultBold', $LANG->line("show_donate_label"))
-				. $DSP->td_c();
-
-			$DSP->body .= $DSP->td('tableCellOne')
-				. "<select name='show_donate'>"
-						. $DSP->input_select_option('y', "Yes", (($settings['show_donate'] == 'y') ? 'y' : '' ))
-						. $DSP->input_select_option('n', "No", (($settings['show_donate'] == 'n') ? 'y' : '' ))
-						. $DSP->input_select_footer()
-				. $DSP->td_c()
-				. $DSP->tr_c();
-
-			$DSP->body .= $DSP->tr()
-				. $DSP->td('tableCellTwo', '30%')
-				. $DSP->qdiv('defaultBold', $LANG->line("show_promos_label"))
-				. $DSP->td_c();
-
-			$DSP->body .= $DSP->td('tableCellTwo')
-				. "<select name='show_promos'>"
-						. $DSP->input_select_option('y', "Yes", (($settings['show_promos'] == 'y') ? 'y' : '' ))
-						. $DSP->input_select_option('n', "No", (($settings['show_promos'] == 'n') ? 'y' : '' ))
-						. $DSP->input_select_footer()
-				. $DSP->td_c()
-				. $DSP->tr_c();
-
-			$DSP->body .= $DSP->table_c();
-		}		
-
-		$DSP->body .=   $DSP->qdiv('itemWrapperTop', $DSP->input_submit());
+		$lgau_query = $DB->query("SELECT class FROM exp_extensions WHERE class = 'Lg_addon_updater_ext' AND enabled = 'y' LIMIT 1");
+		$lgau_enabled = $lgau_query->num_rows ? TRUE : FALSE;
+		ob_start(); include(PATH_EXT.'/lg_add_sitename/views/lg_add_sitename/form_settings.php'); $DSP->body .= ob_get_clean();
 		$DSP->body .=   $DSP->form_c();
+
+		$DSP->body .=   "</div>";
 	}
 
 	/**
@@ -856,6 +548,52 @@ div.helpLinksLeft a { padding-top: 7px; display: block; float: left; }",
 		}
 
 		return $addons;
+	}
+	/**
+	 * Creates a select box
+	 *
+	 * @access public
+	 * @param mixed $selected The selected value
+	 * @param array $options The select box options in a multi-dimensional array. Array keys are used as the option value, array values are used as the option label
+	 * @param string $input_name The name of the input eg: Lg_polls_ext[log_ip]
+	 * @param string $input_id A unique ID for this select. If no id is given the id will be created from the $input_name
+	 * @param boolean $use_lanng Pass the option label through the $LANG->line() method or display in a raw state
+	 * @param array $attributes Any other attributes for the select box such as class, multiple, size etc
+	 * @return string Select box html
+	 */
+	function select_box($selected, $options, $input_name, $input_id = FALSE, $use_lang = TRUE, $key_is_value = TRUE, $attributes = array())
+	{
+		global $LANG;
+
+		$input_id = ($input_id === FALSE) ? str_replace(array("[", "]"), array("_", ""), $input_name) : $input_id;
+
+		$attributes = array_merge(array(
+			"name" => $input_name,
+			"id" => strtolower($input_id)
+		), $attributes);
+
+		$attributes_str = "";
+		foreach ($attributes as $key => $value)
+		{
+			$attributes_str .= " {$key}='{$value}' ";
+		}
+
+		$ret = "<select{$attributes_str}>";
+
+		foreach($options as $option_value => $option_label)
+		{
+			if (!is_int($option_value))
+				$option_value = $option_value;
+			else
+				$option_value = ($key_is_value === TRUE) ? $option_value : $option_label;
+
+			$option_label = ($use_lang === TRUE) ? $LANG->line($option_label) : $option_label;
+			$checked = ($selected == $option_value) ? " selected='selected' " : "";
+			$ret .= "<option value='{$option_value}'{$checked}>{$option_label}</option>";
+		}
+
+		$ret .= "</select>";
+		return $ret;
 	}
 
 }

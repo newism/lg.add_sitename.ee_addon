@@ -16,25 +16,25 @@
 $L = array(
 	'lg_add_sitename_title' => 'LG Add Sitename',
 
-	'access_rights' => 'Extension Access',
-	'enable_extension_for_this_site' => 'Enable LG Add Sitename extension for this site?',
-	'super_replacements' => 'Super Replacements',
-	'enable_super_replacements' => 'Enable \'Super Replacements\'',
+	'enable_extension_title'	=> 'Enable extension',
+	'enable_extension_label'	=> 'Enable {addon_name} for this site?',
+
+	'enable_super_replacements_title' => 'Super replacements',
+	'enable_super_replacements_label' => "Enable super replacements",
 	'enable_super_replacements_info' => '
 		<p>LG Add sitename will replace certain variables in your xhtml template. By default the extension will replace the following variables: <strong>{site_name}</strong>, <strong>{site_description}</strong> and <strong>{site_url}</strong>.</p>
 		<p>Enabling \'Super Replacements\' extends the variables replaced. See the <a href=\'http://leevigraham.com/cms-customisation/expressionengine/lg-add-sitename/\'>extension documentation</a> for a full list of variables replaced.</p>',
 
-	'cp_branding_title'			=> 'CP branding',
-	'cp_branding_info'			=> 'CP branding can be added to the CP header. The following XHTML will be added to the top left of the header and the CSS is added before the closing &lt;/head&gt; tag.',
-	'cp_branding_css_title' 	=> 'CP branding CSS',
-	'cp_branding_xhtml_title' 	=> 'CP branding XHTML',
+	'cp_branding_title'				=> 'CP branding',
+	'cp_branding_info'				=> 'CP branding can be added to the CP header. The following XHTML will be added to the top left of the header and the CSS is added before the closing &lt;/head&gt; tag.',
+	'cp_branding_css_label' 		=> 'CP branding CSS',
+	'cp_branding_xhtml_label' 		=> 'CP branding XHTML',
+	'cp_branding_show_time_label'	=> 'Show the server time and user time?',
 
 	'donation'					=> 'This extension was developed by <a href="http://leevigraham.com">Leevi Graham</a>. <br />Support its development by donating.',
 	'lg_admin_title'			=> 'LG Admin Options',
 	'show_donate_label'			=> 'Show the donation link at the top of the settings page?',
 	'show_promos_label'			=> 'Show promos at the top of the settings page?',
-	'show_time_label'			=> 'Show the server time and user time?',
-
 
 	'head_additions_title'		=> 'CP &lt;/head&gt; additions',
 	'head_additions_label'		=> 'Head additions',
@@ -53,11 +53,11 @@ $L = array(
 	'page_title_enable_label' 	=> 'Enable CP admin page title replacements?',
 	'page_title_value_label' 	=> 'Replace \'ExpressionEngine\' with...',
 
-	'extension_updates' => 'Extension Updates',
-	'check_for_updates_title' => 'Check for updates?',
-	'check_for_updates_info' => 'LG Add Sitename can call home (<a href="http://leevigraham.com/">http://leevigraham.com</a>) and check for recent updates.',
-	'check_for_updates_label' => 'Would you like this extension to check for updates and display them on your CP homepage?',
-	'cache_refresh_label' => 'How many minutes you like the update check cached for?',
+	'check_for_updates_title' 	=> 'Check for updates',
+	'check_for_updates_info' 	=> '{addon_name} can call home, check for recent updates and display them on your CP homepage? This feature requires <a href="http://leevigraham.com/cms-customisation/expressionengine/lg-addon-updater/">LG Addon Updater</a> to be installed and activated.',
+	'check_for_updates_label' 	=> 'Would you like this extension to check for updates?',
+
+	'save_extension_settings'	=> 'Save extension settings',
 
 // END
 ''=>''

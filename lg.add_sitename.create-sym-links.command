@@ -10,4 +10,5 @@ echo "Enter your system folder name [ENTER]:"
 read ee_system_folder
 
 ln -s "$dirname"/system/extensions/ext.lg_add_sitename.php "$ee_path"/"$ee_system_folder"/extensions/ext.lg_add_sitename.php
+ln -s "$dirname"/system/extensions/lg_add_sitename "$ee_path"/"$ee_system_folder"/extensions/lg_add_sitename
 ln -s "$dirname"/system/language/english/lang.lg_add_sitename.php "$ee_path"/"$ee_system_folder"/language/english/lang.lg_add_sitename.php
