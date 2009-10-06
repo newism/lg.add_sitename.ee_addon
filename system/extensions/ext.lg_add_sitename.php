@@ -75,6 +75,16 @@ class Lg_add_sitename {
 	*/
 	var $debug 				= FALSE;
 
+	// Donate button
+	var $paypal 			=  array(
+		"account"				=> "sales@newism.com.au",
+		"donations_accepted"	=> TRUE,
+		"donation_amount"		=> "20.00",
+		"currency_code"			=> "USD",
+		"return_url"			=> "http://leevigraham.com/donate/thanks/",
+		"cancel_url"			=> "http://leevigraham.com/donate/cancel/"
+	);
+
 	/**
 	* PHP4 Constructor
 	*
@@ -115,45 +125,41 @@ class Lg_add_sitename {
 		// create a local variable for the site settings
 		$settings = $this->_get_settings();
 
-		$DSP->crumbline = TRUE;
-		$DSP->crumb_item($DSP->anchor(BASE.AMP.'C=admin'.AMP.'M=utilities'.AMP.'P=extensions_manager', $LANG->line('extensions_manager')));
-		$DSP->crumb  = $DSP->anchor(BASE.AMP.'C=admin'.AMP.'area=utilities', $LANG->line('utilities')).
-		$DSP->crumb .= $DSP->crumb_item($LANG->line('lg_add_sitename_title') . " {$this->version}");
-
-		$DSP->right_crumb($LANG->line('disable_extension'), BASE.AMP.'C=admin'.AMP.'M=utilities'.AMP.'P=toggle_extension_confirm'.AMP.'which=disable'.AMP.'name='.$IN->GBL('name'));
+		$lgau_query = $DB->query("SELECT class FROM exp_extensions WHERE class = 'Lg_addon_updater_ext' AND enabled = 'y' LIMIT 1");
+		$lgau_enabled = $lgau_query->num_rows ? TRUE : FALSE;
 
 		$DSP->title  = $LANG->line('extension_settings');
 
-		$DSP->body = '';
-		$DSP->body .= "<div class='mor settings-form'>";
+		$DSP->crumbline = TRUE;
+		$DSP->crumb  = $DSP->anchor(BASE.AMP.'C=admin'.AMP.'area=utilities', $LANG->line('utilities')).
+		$DSP->crumb_item($DSP->anchor(BASE.AMP.'C=admin'.AMP.'M=utilities'.AMP.'P=extensions_manager', $LANG->line('extensions_manager')));
+		$DSP->crumb .= $DSP->crumb_item("{$this->name} {$this->version}");
 
-		$DSP->body .= "<style type='text/css' media='screen'>
-			#donate{float:right; margin-top:0; padding-left:190px; position:relative; top:-2px}
-			#donate .button{background:transparent url(http://leevigraham.com/themes/site_themes/default/img/btn_paypal-donation.png) no-repeat scroll left bottom; display:block; height:0; overflow:hidden; position:absolute; top:0; left:0; padding-top:27px; text-decoration:none; width:175px}
-			#donate .button:hover{background-position:top right;}
-		</style>";
-		$DSP->body .= "<p id='donate'>
-						" . $LANG->line('donation') ."
-						<a rel='external' href='https://www.paypal.com/cgi-bin/webscr?cmd=_donations&amp;business=sales%40leevigraham%2ecom&amp;item_name=LG%20Expression%20Engine%20Development&amp;amount=%2e00&amp;no_shipping=1&amp;return=http%3a%2f%2fleevigraham%2ecom%2fdonate%2fthanks&amp;cancel_return=http%3a%2f%2fleevigraham%2ecom%2fdonate%2fno%2dthanks&amp;no_note=1&amp;tax=0&amp;currency_code=USD&amp;lc=US&amp;bn=PP%2dDonationsBF&amp;charset=UTF%2d8' class='button' target='_blank'>Donate</a>
-					</p>";
+		$DSP->right_crumb($LANG->line('disable_extension'), BASE.AMP.'C=admin'.AMP.'M=utilities'.AMP.'P=toggle_extension_confirm'.AMP.'which=disable'.AMP.'name='.$IN->GBL('name'));
 
-		$DSP->body .= $DSP->heading($LANG->line('lg_add_sitename_title') . " <small>{$this->version}</small>");
-		
-		$DSP->body .= $DSP->form_open(
-								array(
-									'action' => 'C=admin'.AMP.'M=utilities'.AMP.'P=save_extension_settings'
-								),
-								// WHAT A M*THERF!@KING B!TCH THIS WAS
-								// REMBER THE NAME ATTRIBUTE MUST ALWAYS MATCH THE FILENAME AND ITS CASE SENSITIVE
-								// BUG??
-								array('name' => strtolower(get_class($this)))
-		);
-
-		$lgau_query = $DB->query("SELECT class FROM exp_extensions WHERE class = 'Lg_addon_updater_ext' AND enabled = 'y' LIMIT 1");
-		$lgau_enabled = $lgau_query->num_rows ? TRUE : FALSE;
-		ob_start(); include(PATH_EXT.'/lg_add_sitename/views/lg_add_sitename/form_settings.php'); $DSP->body .= ob_get_clean();
-		$DSP->body .=   $DSP->form_c();
-
+		$DSP->body = "<div class='mor settings-form'>";
+		$DSP->body .= "<p class='donate paypal'>
+							<a rel='external'"
+								. "href='https://www.paypal.com/cgi-bin/webscr?"
+									. "cmd=_donations&amp;"
+									. "business=".rawurlencode($this->paypal["account"])."&amp;"
+									. "item_name=".rawurlencode($this->name . " Development: Donation")."&amp;"
+									. "amount=".rawurlencode($this->paypal["donation_amount"])."&amp;"
+									. "no_shipping=1&amp;return=".rawurlencode($this->paypal["return_url"])."&amp;"
+									. "cancel_return=".rawurlencode($this->paypal["cancel_url"])."&amp;"
+									. "no_note=1&amp;"
+									. "tax=0&amp;"
+									. "currency_code=".$this->paypal["currency_code"]."&amp;"
+									. "lc=US&amp;"
+									. "bn=PP%2dDonationsBF&amp;"
+									. "charset=UTF%2d8'"
+								."class='button'
+								target='_blank'>
+								Support this addon by donating via PayPal.
+							</a>
+						</p>";
+		$DSP->body .= $DSP->heading($this->name . " <small>{$this->version}</small>");
+		ob_start(); include(PATH_LIB.'lg_add_sitename/views/lg_add_sitename/form_settings.php'); $DSP->body .= ob_get_clean();
 		$DSP->body .=   "</div>";
 	}
 

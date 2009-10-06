@@ -1,3 +1,5 @@
+<?php print $DSP->form_open( array('action' => 'C=admin'.AMP.'M=utilities'.AMP.'P=save_extension_settings'), array('name' => strtolower(get_class($this))));?>
+
 <div class="tg">
 	<h2><? print str_replace("{addon_name}", $this->name, $LANG->line("enable_extension_title")); ?></h2>
 	<table>
@@ -149,3 +151,5 @@
 </div>
 
 <input type="submit" value="<?php print $LANG->line('save_extension_settings') ?>" />
+
+</form>

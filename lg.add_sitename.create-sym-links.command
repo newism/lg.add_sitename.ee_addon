@@ -4,11 +4,33 @@
 
 dirname=`dirname "$0"`
 
-echo "Enter the path to your ExpressionEngine Install without a trailing slash [ENTER]:"
+echo "
+You are about to create symlinks for LG Add Sitename
+----------------------------------------------------
+
+The symlinks use absolute paths so they are for development purposes only.
+
+The following directories must be writable:
+
+system/extensions
+system/modules
+system/language
+system/lib
+themes/cp_global_images
+themes/cp_themes/default
+themes/site_themes
+
+Enter the full path to your ExpressionEngine install *without a trailing slash* [ENTER]:"
 read ee_path
-echo "Enter your system folder name [ENTER]:"
+echo "
+Enter your ee system folder name [ENTER]:"
 read ee_system_folder
 
+# extensions
 ln -s "$dirname"/system/extensions/ext.lg_add_sitename.php "$ee_path"/"$ee_system_folder"/extensions/ext.lg_add_sitename.php
-ln -s "$dirname"/system/extensions/lg_add_sitename "$ee_path"/"$ee_system_folder"/extensions/lg_add_sitename
+
+# lib
+ln -s "$dirname"/system/lib/lg_add_sitename "$ee_path"/"$ee_system_folder"/lib
+
+# language
 ln -s "$dirname"/system/language/english/lang.lg_add_sitename.php "$ee_path"/"$ee_system_folder"/language/english/lang.lg_add_sitename.php
