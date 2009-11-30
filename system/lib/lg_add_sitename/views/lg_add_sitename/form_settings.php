@@ -1,12 +1,12 @@
 <?php print $DSP->form_open( array('action' => 'C=admin'.AMP.'M=utilities'.AMP.'P=save_extension_settings'), array('name' => strtolower(get_class($this))));?>
 
 <div class="tg">
-	<h2><? print str_replace("{addon_name}", $this->name, $LANG->line("enable_extension_title")); ?></h2>
+	<h2><?php print str_replace("{addon_name}", $this->name, $LANG->line("enable_extension_title")); ?></h2>
 	<table>
 		<tbody>
 			<tr class="even">
 				<th>
-					<? print str_replace("{addon_name}",  $this->name, $LANG->line("enable_extension_label")); ?>
+					<?php print str_replace("{addon_name}",  $this->name, $LANG->line("enable_extension_label")); ?>
 				</th>
 				<td>
 					<?php print $this->select_box(
@@ -22,7 +22,7 @@
 
 <div class="tg">
 	<h2><?php print $LANG->line("enable_super_replacements_label"); ?></h2>
-	<div class="info"><? print $LANG->line("enable_super_replacements_info"); ?></div>
+	<div class="info"><?php print $LANG->line("enable_super_replacements_info"); ?></div>
 	<table>
 		<tbody>
 			<tr class="even">
@@ -143,7 +143,7 @@
 						&nbsp;
 						<span class='highlight'>LG Addon Updater is not installed and activated.</span>
 						<input type="hidden" name="check_for_updates" value="0" />
-					<? endif; ?>
+					<?php endif; ?>
 				</td>
 			</tr>
 		</tbody>
