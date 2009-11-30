@@ -496,7 +496,7 @@ div.helpLinksLeft a { padding-top: 7px; display: block; float: left; }",
 			if(isset($SESS->cache['Morphine']['cp_styles_included']) === FALSE && $IN->GBL("P") == "extension_settings" && $IN->GBL("name") == "lg_add_sitename")
 			{
 				$patterns['morphine'] = "#</head>#";
-				$replacements['morphine'] = "\n<link rel='stylesheet' type='text/css' media='screen' href='" . $PREFS->ini('theme_folder_url', 1) . "cp_themes/".$PREFS->ini('cp_theme')."/Morphine/css/MOR_screen.css' />";
+				$replacements['morphine'] = "\n<link rel='stylesheet' type='text/css' media='screen' href='" . $PREFS->ini('theme_folder_url', 1) . "cp_themes/".$PREFS->ini('cp_theme')."/Morphine/css/MOR_screen.css' /></head>";
 				$SESS->cache['Morphine']['cp_styles_included'] = TRUE;
 			}
 
