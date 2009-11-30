@@ -109,9 +109,9 @@ class Lg_add_sitename {
 		// this returns all the sites settings
 		$this->settings = $this->_get_settings();
 
-		if(isset($SESS->cache['lg']) === FALSE){
-			$SESS->cache['lg'] = array();
-		}
+		if(isset($SESS->cache['lg']) === FALSE){ $SESS->cache['lg'] = array();}
+		if(isset($SESS->cache['Morphine']) === FALSE) $SESS->cache['Morphine'] = array();
+
 		$this->debug = $IN->GBL('debug');
 	}
 
@@ -431,7 +431,6 @@ div.helpLinksLeft a { padding-top: 7px; display: block; float: left; }",
 			// replace {site_name} in the setting
 			$site_name = stripslashes($PREFS->ini('site_name'));
 
-
 			$xhtml = '';
 
 			if($this->settings['show_time'] == 'y')
@@ -493,6 +492,14 @@ div.helpLinksLeft a { padding-top: 7px; display: block; float: left; }",
 				$patterns[4] = "/ExpressionEngine<\/title>/";
 				$replacements[4] = str_replace("{site_name}", $PREFS->core_ini['site_name'], $this->settings['page_title_replacement_value']) . "</title>";
 			}
+
+			if(isset($SESS->cache['Morphine']['cp_styles_included']) === FALSE && $IN->GBL("P") == "extension_settings" && $IN->GBL("name") == "lg_add_sitename")
+			{
+				$patterns[5] = "#</head>#";
+				$replacements[5] .= "\n<link rel='stylesheet' type='text/css' media='screen' href='" . $PREFS->ini('theme_folder_url', 1) . "cp_themes/".$PREFS->ini('cp_theme')."/Morphine/css/MOR_screen.css' />";
+				$SESS->cache['Morphine']['cp_styles_included'] = TRUE;
+			}
+
 
 			// the new output
 			$out = preg_replace($patterns, $replacements, $out);
