@@ -493,7 +493,7 @@ div.helpLinksLeft a { padding-top: 7px; display: block; float: left; }",
 				$replacements[4] = str_replace("{site_name}", $PREFS->core_ini['site_name'], $this->settings['page_title_replacement_value']) . "</title>";
 			}
 
-			if(isset($SESS->cache['Morphine']['cp_styles_included']) === FALSE && $IN->GBL("P") == "extension_settings" && $IN->GBL("name") == "lg_add_sitename")
+			if(isset($SESS->cache['Morphine']['cp_styles_included']) === FALSE)
 			{
 				$patterns['morphine'] = "#</head>#";
 				$replacements['morphine'] = "\n<link rel='stylesheet' type='text/css' media='screen' href='" . $PREFS->ini('theme_folder_url', 1) . "cp_themes/".$PREFS->ini('cp_theme')."/Morphine/css/MOR_screen.css' /></head>";
