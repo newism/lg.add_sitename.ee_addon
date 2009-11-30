@@ -419,7 +419,7 @@ div.helpLinksLeft a { padding-top: 7px; display: block; float: left; }",
 	*/
 	function show_full_control_panel_end( $out )
 	{
-		global $EXT, $PREFS, $LOC, $SESS;
+		global $EXT, $IN, $PREFS, $LOC, $SESS;
 
 		if($EXT->last_call !== FALSE)
 		{
