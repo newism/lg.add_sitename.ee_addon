@@ -9,7 +9,13 @@ The extension comes with default settings that adds a light grey piece of text w
 
 LG Add Sitename is Multi-site Manager compatible and will notify site administrators when an update is available (requires [LG Addon Updater][lg_addon_updater]).
 
-### Screenshots - coming soon.
+### Screenshots
+
+![Customised CP header](http://s3.amazonaws.com/ember/mnMurYyE3farLFiffQvkGk8dGxvLvIkq_l.jpg)  
+Customised CP header
+
+![Extension settings](http://s3.amazonaws.com/ember/1gtJNknbmxFp5uevz8xorS7QuZdrD0As_m.jpg)  
+Extension settings
 
 Getting started
 -------------
