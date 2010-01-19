@@ -16,7 +16,7 @@
 $L = array(
 	'lg_add_sitename_title' => 'LG Add Sitename',
 
-	'enable_extension_title'	=> 'Enable extension',
+	'enable_extension_title'	=> 'Extension preferences',
 	'enable_extension_label'	=> 'Enable {addon_name} for this site?',
 
 	'enable_super_replacements_title' => 'Super replacements',

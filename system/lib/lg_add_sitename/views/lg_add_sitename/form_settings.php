@@ -21,10 +21,17 @@
 </div>
 
 <div class="tg">
-	<h2><?php print $LANG->line("enable_super_replacements_label"); ?></h2>
-	<div class="info"><?php print $LANG->line("enable_super_replacements_info"); ?></div>
+	<h2><?php print $LANG->line("cp_branding_title"); ?></h2>
+	<div class="info">
+		<?php print $LANG->line('cp_branding_info');?>
+		<?php print $LANG->line("enable_super_replacements_info"); ?>
+	</div>
 	<table>
 		<tbody>
+			<tr class="even">
+				<th scope="row"><?php print $LANG->line('cp_branding_xhtml_label'); ?></th>
+				<td><?php print $DSP->input_textarea('xhtml', $settings['xhtml'], 5, 'textarea', '99%'); ?></td>
+			</tr>
 			<tr class="even">
 				<th>
 					<?php print $LANG->line("enable_super_replacements_label"); ?>
@@ -36,19 +43,6 @@
 						"enable_super_replacements");
 					?>
 				</td>
-			</tr>
-		</tbody>
-	</table>
-</div>
-
-<div class="tg">
-	<h2><?php print $LANG->line("cp_branding_title"); ?></h2>
-	<div class="info"><?php print $LANG->line('cp_branding_info'); ?></div>
-	<table>
-		<tbody>
-			<tr class="even">
-				<th scope="row"><?php print $LANG->line('cp_branding_xhtml_label'); ?></th>
-				<td><?php print $DSP->input_textarea('xhtml', $settings['xhtml'], 5, 'textarea', '99%'); ?></td>
 			</tr>
 			<tr class="odd">
 				<th scope="row"><?php print $LANG->line('cp_branding_css_label'); ?></th>
