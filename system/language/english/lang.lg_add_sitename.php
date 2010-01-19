@@ -26,7 +26,7 @@ $L = array(
 		<p>Enabling \'Super Replacements\' extends the variables replaced. See the <a href=\'http://leevigraham.com/cms-customisation/expressionengine/lg-add-sitename/\'>extension documentation</a> for a full list of variables replaced.</p>',
 
 	'cp_branding_title'				=> 'CP branding',
-	'cp_branding_info'				=> 'CP branding can be added to the CP header. The following XHTML will be added to the top left of the header and the CSS is added before the closing &lt;/head&gt; tag.',
+	'cp_branding_info'				=> '<p>CP branding can be added to the CP header. The following XHTML will be added to the top left of the header and the CSS is added before the closing &lt;/head&gt; tag.</p>',
 	'cp_branding_css_label' 		=> 'CP branding CSS',
 	'cp_branding_xhtml_label' 		=> 'CP branding XHTML',
 	'cp_branding_show_time_label'	=> 'Show the server time and user time?',
