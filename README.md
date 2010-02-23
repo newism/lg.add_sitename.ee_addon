@@ -18,7 +18,7 @@ Customised CP header
 Extension settings
 
 Getting started
--------------
+---------------
 
 ### Requirements
 
@@ -325,7 +325,7 @@ LG Add Sitename can call home, check for recent updates and display them on your
 
 Enable / disable update notifications.
 
-Version Notes
+Release Notes
 ------------
 
 ### Upgrading?
@@ -367,9 +367,9 @@ Version Notes
 Support
 -------
 
-Technical support is available primarily through the ExpressionEngine forums. Leevi Graham and Newism do not provide direct phone support. No representations or guarantees are made regarding the response time in which support questions are answered.
+Technical support is available primarily through the [ExpressionEngine forums][ee_forums]. [Leevi Graham][lg] and [Newism][newism] do not provide direct phone support. No representations or guarantees are made regarding the response time in which support questions are answered.
 
-Although we are actively developing this addon, Leevi Graham and Newism makes no guarantees that it will be upgraded within any specific timeframe.
+Although we are actively developing this addon, [Leevi Graham][lg] and [Newism][newism] makes no guarantees that it will be upgraded within any specific timeframe.
 
 License
 ------
@@ -388,7 +388,11 @@ You may not:
 
 THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
+[lg]: http://leevigraham.com
+[newism]: http://newism.com.au
+
 [ee]: http://expressionengine.com/index.php?affiliate=newism
+[ee_forums]: http://expressionengine.com/index.php?affiliate=newism&page=forums
 [ee_extensions_manager]: http://expressionengine.com/index.php?affiliate=newism&page=docs/cp/admin/utilities/extension_manager.html
 
 [firefox]: http://firefox.com
@@ -397,5 +401,3 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 
 [lg_addon_updater]: http://leevigraham.com/cms-customisation/expressionengine/lg-addon-updater/
 [gh_morphine_theme]: http://github.com/newism/nsm.morphine.theme
-
-[1]: http://expressionengine.com/forums/viewthread/54996/
